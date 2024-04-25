@@ -1,0 +1,7 @@
+{
+    "env":{
+        "PORT": "5050",
+        "SECRET_KEY": "san_benedetto_my_secret",
+        "DOC_PATH": "./documents/"
+    }
+}

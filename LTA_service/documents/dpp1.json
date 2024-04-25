@@ -1,0 +1,13 @@
+{
+	"Public": {
+			"ProductID": "sn:123456789",
+			"ProductName": "FooProduct",
+			"CompanyName": "FooCompany",
+			"ProductComponents": [ "componentA_link", "componentB_link"]
+	},
+
+	"Restricted": { 
+			"PrivateInfo1": "test"
+	}
+	
+}
