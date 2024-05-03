@@ -6,7 +6,7 @@ const DocumentsController = require( '../controllers/documents');
 
 
 
-router.post('/',checkAuth,upload.single('file'),DocumentsController.create_doc);
+router.post('/', checkAuth,upload.single('file'), DocumentsController.create_doc);
 
 router.get('/:fileId',checkAuth,DocumentsController.get_doc);
 

@@ -10,6 +10,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req,file, cb) => {
+    console.log("Filtering...");
 
     //Accept only json files
     if(file.mimetype != 'application/json')

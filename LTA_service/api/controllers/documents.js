@@ -1,4 +1,4 @@
-const fs = require('fs/promises');
+
 
 //GET: download document with name specified in the request params
 exports.get_doc = (req,res, next) => {
@@ -17,9 +17,14 @@ exports.get_doc = (req,res, next) => {
 
 //POST: upload document
 exports.create_doc = (req,res,next) =>{
+
+	console.log(req.body);
+	
     res.status(201).json({
         message: "File uploaded"
     });    
+
+	
 }
 
 
