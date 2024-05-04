@@ -11,6 +11,7 @@ const dppRoutes = require('./api/routes/dpp');
 
 
 app.use(morgan('dev'));
+
 //Extract url and json data to make more readable
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

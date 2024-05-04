@@ -18,7 +18,7 @@ exports.get_doc = (req,res, next) => {
 //POST: upload document
 exports.create_doc = (req,res,next) =>{
 
-	console.log(req.body);
+	//console.log(req.body);
 	
     res.status(201).json({
         message: "File uploaded"
