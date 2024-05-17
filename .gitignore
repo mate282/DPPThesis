@@ -1,3 +1,6 @@
+#MongoDB directory
+FC_DB_data
+
 # Logs
 logs
 *.log

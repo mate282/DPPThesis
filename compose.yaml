@@ -12,3 +12,13 @@ services:
       - ./DPP_service:/usr/src/app
     ports:
       - "5051:5051"
+
+  fc_db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: dpp_fc_db
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./FC_DB_data:/data/db
+    ports:
+      - "5053:27017"
