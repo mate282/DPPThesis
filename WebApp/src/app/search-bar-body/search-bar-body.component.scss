@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    align-items: center;
+    margin: 2px;
+  
+    input[type="text"] {
+      padding: 10px 15px;
+      font-size: 16px;
+      color: #ffffff; // Colore del testo
+      background-color: #0056b3; // Colore di sfondo
+      border: 1px solid #cccccc; // Bordo grigio chiaro
+      border-radius: 0; // Angoli retti
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  
+      &:focus {
+        border-color: #0056b3; // Blu EU per il focus
+        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25); // Ombra blu chiaro
+      }
+  
+      &::placeholder {
+        color: #999999; // Colore del placeholder
+      }
+    }
+  }
+  

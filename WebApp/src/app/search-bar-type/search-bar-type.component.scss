@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+  
+    .identifier-type {
+      padding: 10px 15px;
+      font-size: 16px;
+      color: #ffffff; // Colore del testo
+      background-color: #0056b3; // Colore di sfondo
+      border: 1px solid #ffffff; // Bordo grigio chiaro
+      border-top-left-radius: 20px; // Angolo sinistro superiore arrotondato
+      border-bottom-left-radius: 20px; // Angolo sinistro inferiore arrotondato
+      border-top-right-radius: 0; // Angolo destro superiore retto
+      border-bottom-right-radius: 0; // Angolo destro inferiore retto
+      outline: none;
+      appearance: none; // Rimuove la freccia di default in alcuni browser
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,5" fill="#333"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 10px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  
+      &:focus {
+        border-color: #0056b3; // Blu EU per il focus
+        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25); // Ombra blu chiaro
+      }
+    }
+  }
+  

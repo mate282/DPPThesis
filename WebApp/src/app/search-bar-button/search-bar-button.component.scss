@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: #0056b3; // Blu EU
+      border: none;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  
+      &:hover {
+        background-color: #004494; // Colore hover leggermente più scuro
+      }
+  
+      &:active {
+        transform: scale(0.95);
+      }
+  
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.5);
+      }
+  
+      &.disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
