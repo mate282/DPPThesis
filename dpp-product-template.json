@@ -1,0 +1,31 @@
+{
+    "@context": {
+        "gs1": "http://gs1.org/voc/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "@vocab": "http://gs1.org/voc/"
+    },
+    "@type": "gs1:Product",
+    "gs1:gtin": "12345678901234",
+    "gs1:brandName": "Only@T-Shirt",
+    "gs1:brandOwner": "Clothes Co.",
+    "gs1:productName": "Red T-Shirt",
+    "gs1:productDescription": "Red T-Shirt with Printings",
+    "gs1:productType": "clothing",
+    "gs1:image": {
+        "gs1:referencedFileURL": "https://png.pngtree.com/png-vector/20240125/ourmid/pngtree-plain-red-t-shirt-mockup-template-with-views-front-and-back-png-image_11548192.png",
+        "gs1:filePixelWidth": "512",
+        "gs1:filePixelHeight":"512"
+    },
+    "gs1:countryOfAssembly": "Italy",
+    "gs1:packagingMarkedLabelAccreditation": "some certifications…",
+    "gs1:grossWeight": {
+        "gs1:unitCode": "KGM",
+        "gs1:value": "3"
+    },
+    "gs1:grossVolume": {
+        "gs1:unitCode": "MTQ",
+        "gs1:value": "1"
+    },
+    "gs1:variantDescription":"Printing A",
+    "gs1:referencedFile":"redTshirt.com"
+}

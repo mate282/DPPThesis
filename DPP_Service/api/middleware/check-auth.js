@@ -8,7 +8,9 @@ module.exports = (req,res,next) => {
         req.userData = decoded;
         next();
     }catch(error){
-        return res.status(401).json({
+        return res.status(401)
+        .set('WWW-Authenticate','WWW-Authenticate : Bearer')
+        .json({
             message:'Auth failed'
         });
     }

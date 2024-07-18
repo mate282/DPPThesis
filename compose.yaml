@@ -1,4 +1,18 @@
 services:
+  web_app:
+    build: ./Web_App
+    ports:
+      - "5054:80"
+    volumes:
+      - ./Web_App:/usr/local/apache2/htdocs/
+
+  fc_service:
+    build: ./FC_Service
+    ports:
+      - "5052:5052"
+    volumes:
+      - ./FC_Service:/usr/src/app
+
   lta_service:
     build: ./LTA_service
     ports:

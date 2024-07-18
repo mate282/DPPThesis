@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="myForm">
+        <div class="searchForm">
+            <input type="text" id="textField" name="textField" placeholder="Product GTIN" required>
+            <button type="submit">Search</button>
+        </div>
+        
+    </form>
+
+    <div id="openPublicDpp" class="dppLink">Public Link</div>
+    <div id="openPrivateDpp" class="dppLink">Private Link</div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previene il comportamento predefinito del form (ricaricamento della pagina)
+            
+            const textFieldValue = document.getElementById('textField').value; // Preleva il valore del campo di testo
+            const url = `http://localhost:5052/dpp/${textFieldValue}`; // Costruisce l'URL con il valore
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const publicLink = data.public_link; // Estrae il campo 'link' dalla risposta JSON
+                    const privateLink = data.private_link; // Estrae il campo 'link' dalla risposta JSON
+                    localStorage.setItem('publicDocLink', publicLink); // Memorizza il link nel localStorage
+                    document.getElementById('openPublicDpp').style.display = 'block'; // Mostra il testo cliccabile
+                    localStorage.setItem('privateDocLink', privateLink); // Memorizza il link nel localStorage
+                    document.getElementById('openPrivateDpp').style.display = 'block'; // Mostra il testo cliccabile
+                })
+                
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        });
+
+        document.getElementById('openPublicDpp').addEventListener('click', function() {
+            window.location.href = 'product.html'; // Redirige a una nuova pagina HTML
+        });
+        document.getElementById('openPrivateDpp').addEventListener('click', function() {
+            window.location.href = 'privateDppPage.html'; // Redirige a una nuova pagina HTML
+        });
+    </script>
+</body>
+</html>

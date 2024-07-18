@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: linear-gradient(135deg,white,#0000FF20);
+    text-align: -webkit-center;
+}
+.title{
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+}
+
+.gtin{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.gtinLbl{
+    font-weight: lighter;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+.gtinValue{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+.profile img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+.profile h2 {
+    margin: 10px 0;
+}
+.profile {
+    margin: 5px 0;
+    color: gray;
+}
+.profile .info {
+    text-align: left;
+    width: 100%;
+}
+.profile .info div {
+    margin-bottom: 10px;
+}
+.profile .info label {
+    font-weight: bold;
+    color: black;
+}
+span{
+    color: black;
+}

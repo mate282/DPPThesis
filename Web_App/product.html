@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Profile</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+    <div class="profile">
+        <img id="productImage" src="" alt="Product Image">
+        <h2 id="productName"></h2>
+        <h3 id="brandName"></h3>
+        <div class="info">
+            <h3 class="title">Mandatory Info:</h3>
+            <div class="gtin"><label class="gtinLbl">GTIN:</label> <span id="gtin" class="gtinValue"></span></div>
+            <div><label>Brand Owner:</label> <span id="brandOwner"></span></div>
+            <div><label>Product Description:</label> <span id="productDescription"></span></div>
+            <div><label>Product Type:</label> <span id="productType"></span></div>
+            <div><label>Country of Assembly:</label> <span id="countryOfAssembly"></span></div>
+            <div><label>Packaging Accreditation:</label> <span id="packagingMarkedLabelAccreditation"></span></div>
+            <div><label>Gross Weight:</label> <span id="grossWeight"></span></div>
+            <div><label>Gross Volume:</label> <span id="grossVolume"></span></div>
+            <div><label>Variant Description:</label> <span id="variantDescription"></span></div>
+            <div><label>Referenced File:</label> <a id="referencedFile" href="" target="_blank">Link</a></div>
+            <!-- Campi aggiuntivi per WearableProduct -->
+            <div id="wearableInfo" style="display: none;">
+                <h3 class="title">Product Info:</h3>
+                <!-- Aggiungi i campi specifici per i prodotti indossabili qui -->
+                <div><label>Season:</label> <span id="seasonName"></span></div>
+                <div><label>Size:</label> <span id="size"></span></div>
+                <div><label>Materials:</label><span id="materials"></span></div>
+                <div><label>Collection:</label> <span id="collection"></span></div>
+                <div><label>Color:</label> <span id="color"></span></div>
+                <div><label>Production Flow:</label> <span id="production"></span></div>
+                <div><label>User Guide:</label> <span id="userGuide"></span></div>
+                <div><label>Recyclin Tips:</label> <span id="recyclingGuide"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const documentLink = localStorage.getItem('publicDocLink');
+            if (!documentLink) {
+                console.error('No document link found in localStorage');
+                return;
+            }
+
+            fetch(documentLink)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const type = data['@type'];
+                    if (type.includes('gs1:Product') || type.includes('gs1:WearableProduct')) {
+                        document.getElementById('productImage').src = data['gs1:image']['gs1:referencedFileURL'];
+                        document.getElementById('productName').textContent = data['gs1:productName'];
+                        document.getElementById('brandName').textContent = data['gs1:brandName'];
+                        document.getElementById('gtin').textContent = data['gs1:gtin'];
+                        document.getElementById('brandOwner').textContent = data['gs1:brandOwner'];
+                        document.getElementById('productDescription').textContent = data['gs1:productDescription'];
+                        document.getElementById('productType').textContent = data['gs1:productType'];
+                        document.getElementById('countryOfAssembly').textContent = data['gs1:countryOfAssembly'];
+                        document.getElementById('packagingMarkedLabelAccreditation').textContent = data['gs1:packagingMarkedLabelAccreditation'];
+                        document.getElementById('grossWeight').textContent = `${data['gs1:grossWeight']['gs1:value']} ${data['gs1:grossWeight']['gs1:unitCode']}`;
+                        document.getElementById('grossVolume').textContent = `${data['gs1:grossVolume']['gs1:value']} ${data['gs1:grossVolume']['gs1:unitCode']}`;
+                        document.getElementById('variantDescription').textContent = data['gs1:variantDescription'];
+                        document.getElementById('referencedFile').href = data['gs1:referencedFile'];
+
+                        if (type.includes('gs1:WearableProduct')) {
+                            document.getElementById('wearableInfo').style.display = 'block';
+                            // Visualizza i campi aggiuntivi specifici per WearableProduct
+                            document.getElementById('seasonName').textContent = data['gs1:seasonName'] || 'N/A';
+                            document.getElementById('size').textContent = `${data['gs1:size']['gs1:sizeType']}: ${data['gs1:size']['gs1:sizeDimension']['gs1:value']} ${data['gs1:size']['gs1:sizeDimension']['gs1:unitCode']}` || 'N/A';
+                            document.getElementById('materials').textContent = data['gs1:textileMaterialContent'] || 'N/A';
+                            document.getElementById('collection').textContent = data['collectionName'] || 'N/A';
+                            document.getElementById('color').textContent = data['color'] || 'N/A';
+                            document.getElementById('production').textContent = data['productionWorkflow'] || 'N/A';
+                            document.getElementById('userGuide').textContent = data['userInstruction'] || 'N/A';
+                            document.getElementById('recyclingGuide').textContent = data['recyclingInstruction'] || 'N/A';
+                            // Aggiungi altri campi specifici qui
+                        }
+                    } else {
+                        console.error('Unsupported product type');
+                    }
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        });
+    </script>
+</body>
+</html>
