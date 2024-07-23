@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Profile</title>
     <link rel="stylesheet" href="product.css">
 </head>
+
 <body>
     <div class="profile">
         <img id="productImage" src="" alt="Product Image">
-        <h2 id="productName"></h2>
-        <h3 id="brandName"></h3>
+        <div class="brand-details">
+            <h2 id="productName"></h2>
+            <h3 id="brandName"></h3>
+            <h3 id="brandOwner"></h3>
+        </div>
+
         <div class="info">
-            <h3 class="title">Mandatory Info:</h3>
+            <h4 class="title">Mandatory Info:</h4>
             <div class="gtin"><label class="gtinLbl">GTIN:</label> <span id="gtin" class="gtinValue"></span></div>
-            <div><label>Brand Owner:</label> <span id="brandOwner"></span></div>
-            <div><label>Product Description:</label> <span id="productDescription"></span></div>
-            <div><label>Product Type:</label> <span id="productType"></span></div>
-            <div><label>Country of Assembly:</label> <span id="countryOfAssembly"></span></div>
-            <div><label>Packaging Accreditation:</label> <span id="packagingMarkedLabelAccreditation"></span></div>
-            <div><label>Gross Weight:</label> <span id="grossWeight"></span></div>
-            <div><label>Gross Volume:</label> <span id="grossVolume"></span></div>
-            <div><label>Variant Description:</label> <span id="variantDescription"></span></div>
-            <div><label>Referenced File:</label> <a id="referencedFile" href="" target="_blank">Link</a></div>
-            <!-- Campi aggiuntivi per WearableProduct -->
-            <div id="wearableInfo" style="display: none;">
-                <h3 class="title">Product Info:</h3>
-                <!-- Aggiungi i campi specifici per i prodotti indossabili qui -->
-                <div><label>Season:</label> <span id="seasonName"></span></div>
-                <div><label>Size:</label> <span id="size"></span></div>
-                <div><label>Materials:</label><span id="materials"></span></div>
-                <div><label>Collection:</label> <span id="collection"></span></div>
-                <div><label>Color:</label> <span id="color"></span></div>
-                <div><label>Production Flow:</label> <span id="production"></span></div>
-                <div><label>User Guide:</label> <span id="userGuide"></span></div>
-                <div><label>Recyclin Tips:</label> <span id="recyclingGuide"></span></div>
+            <div class="grid-container">
+                <div class="grid-item"><span id="productType"></span></div>
+                <div class="grid-item"><span id="countryOfAssembly"></span></div>
+                <div class="grid-item"><span id="grossWeight"></span></div>
+                <div class="grid-item"> <span id="grossVolume"></span></div>
             </div>
+            <div><label>Description:</label> <span id="productDescription"></span></div>
+            <!--<div><label>Product Type:</label> <span id="productType"></span></div>-->
+            <!--<div><label>Country of Assembly:</label> <span id="countryOfAssembly"></span></div>-->
+            <div><label>Certifications:</label> <span id="packagingMarkedLabelAccreditation"></span></div>
+            <!--<div><label>Gross Weight:</label> <span id="grossWeight"></span></div>-->
+            <!--<div><label>Gross Volume:</label> <span id="grossVolume"></span></div>-->
+            <div><label>Variant Description:</label> <span id="variantDescription"></span></div>
+            <div><label>Other Info:</label> <a id="referencedFile" href="" target="_blank">Link</a></div>
+            <!-- Campi aggiuntivi per WearableProduct -->       
+        </div>
+        <div class="wearable-info" id="wearableInfo" style="display: none;">
+            <h4 class="title">Product Info:</h4>
+            <!-- Aggiungi i campi specifici per i prodotti indossabili qui -->
+            <div><label>Season:</label> <span id="seasonName"></span></div>
+            <div><label>Size:</label> <span id="size"></span></div>
+            <div><label>Materials:</label><span id="materials"></span></div>
+            <div><label>Collection:</label> <span id="collection"></span></div>
+            <div><label>Color:</label> <span id="color"></span></div>
+            <div><label>Production Flow:</label> <span id="production"></span></div>
+            <div><label>User Guide:</label> <span id="userGuide"></span></div>
+            <div><label>Recyclin Tips:</label> <span id="recyclingGuide"></span></div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const documentLink = localStorage.getItem('publicDocLink');
             if (!documentLink) {
                 console.error('No document link found in localStorage');
@@ -94,4 +105,5 @@
         });
     </script>
 </body>
+
 </html>

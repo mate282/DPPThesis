@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Product Passport</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Digital Product Passport</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/digital-2023-cloud-data-04-digipass;callCode=null;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1,2,8;statusCodes=31094501;programmePeriod=2021%20-%202027;programCcm2Id=43152860;programDivisionCode=null;focusAreaCode=null;destinationGroup=null;missionGroup=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=topicSearchTablePageState">About</a></li>
+            <li><a href="">How it works</a><</li>
+            
+        </ul>
+    </nav>
+
+    <div class="container">
+        <form id="searchForm">
+            <input type="text" id="searchBar" name="searchBar" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+
+        <div id="dppBlock" class="dpp-block">DPP: <span id="dppId">1234</span></div>
+        <div id="errorBlock" class="error-block">No document found</div>
+    </div>
+
+   
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            //disable page reloading(default behaviour)
+            event.preventDefault();
+            //read value to search
+            const query = document.getElementById('searchBar').value;
+            console.log('Search query:', query);
+            //API URL
+            const url = `http://localhost:5052/dpp/${query}`;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    //get link from response
+                    const publicLink = data.public_link; 
+                    //save link to pass it to next page
+                    localStorage.setItem('publicDocLink', publicLink); 
+                    document.getElementById('dppId').textContent = query;
+                    document.getElementById('dppBlock').style.display = 'block'; 
+                    document.getElementById('errorBlock').style.display = 'none'; 
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    document.getElementById('errorBlock').style.display = 'block'; 
+                    document.getElementById('dppBlock').style.display = 'none';
+                });
+        });
+
+        document.getElementById('dppBlock').addEventListener('click', function () {
+            window.location.href = 'product.html'; // Redirige a una nuova pagina HTML
+        });
+    </script>
+</body>
+
+</html>
