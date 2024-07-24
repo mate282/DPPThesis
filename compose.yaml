@@ -13,12 +13,12 @@ services:
     volumes:
       - ./FC_Service:/usr/src/app
 
-  lta_service:
-    build: ./LTA_service
-    ports:
-      - "5050:5050"
-    volumes:
-      - ./LTA_service:/usr/src/app
+  #lta_service:
+  #  build: ./LTA_service
+  #  ports:
+  #    - "5050:5050"
+  #  volumes:
+  #    - ./LTA_service:/usr/src/app
     
   dpp_service:
     build: ./DPP_service

@@ -15,7 +15,7 @@ exports.get_public_doc = async (req, res, next) => {
 	//Request for AIP ID of the document
 	getAipId(`dpp_${id}.json`).
 	then(aipId => {
-		//console.log("AIP:", aipId);
+		console.log("AIP:", aipId);
 		//request to download the document
 		getDocFromAIP(aipId).
 		then(doc => {
