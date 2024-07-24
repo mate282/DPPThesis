@@ -6,7 +6,7 @@ exports.login_user = (req,res,next)=>{
 
     //Check user identity
     if(email != 'admin' || psw != 'admin' ){
-        console.log('Wrong Email');
+        console.log('Wrong Credentials');
         return res.status(401).json({message: 'Auth Failed'});
     }
     else{
