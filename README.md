@@ -35,4 +35,8 @@ USAGE:
     #docker compose up -d
    and wait for the setup
 5) From your browser enter the following URL to http://localhost:5054/www/ to access the Web App
+
+In case of problems with access to services add the following entries to your hosts file:
+127.0.0.1     dpp_service
+127.0.0.1     fc_service
       
