@@ -1,6 +1,7 @@
 
 #Env file of DPP service
-./DPP_Service/.env
+DPP_Service/.env
+
 
 #MongoDB directory
 FC_DB_data
@@ -80,11 +81,11 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+#.env
+#.env.development.local
+#.env.test.local
+#.env.production.local
+#.env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -135,3 +136,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
