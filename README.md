@@ -29,12 +29,13 @@ Web_App => User UI to use the DPP Infrastructure.
 USAGE:
 
 1) Clone repository on your computer.
-2) Open terminal from the repository folder
-3) Open Docker
-4) In the terminal run the compose file with:
+2) Copy the ".env" file inside the DPP_Service folder.
+3) Open terminal from the repository folder
+4) Open Docker
+5) In the terminal run the compose file with:
     #docker compose up -d
    and wait for the setup
-5) From your browser enter the following URL to http://localhost:5054/www/ to access the Web App
+6) From your browser enter the following URL to http://localhost:5054/www/ to access the Web App
 
 In case of problems with access to services add the following entries to your hosts file:
 127.0.0.1     dpp_service
