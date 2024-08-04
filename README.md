@@ -37,6 +37,12 @@ USAGE:
    and wait for the setup
 6) From your browser enter the following URL to http://localhost:5054/www/ to access the Web App
 
+Actually on the MongoDB server there are two registered object: 
+1) _id: 12345678901234
+2) _id: 9876543210
+
+From the web app you can search for one of this object and get the link to their DPP.
+
 In case of problems with access to services add the following entries to your hosts file:
 127.0.0.1     dpp_service
 127.0.0.1     fc_service
