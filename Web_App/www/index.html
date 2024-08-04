@@ -25,13 +25,21 @@
             <button type="submit">Search</button>
         </form>
 
-        <div id="dppBlock" class="dpp-block">DPP: <span id="dppId">1234</span></div>
+        <!--<div id="dppBlock" class="dpp-block">DPP: <span id="dppId">1234</span></div>-->
+        <div class="scrollable-list" id="scrollableList" >
+            <!-- JSON data elements will be appended here -->
+        </div>
         <div id="errorBlock" class="error-block">No document found</div>
     </div>
 
    
 
     <script>
+        function openDppPage(url) {
+            localStorage.setItem('publicDocLink', url);
+            window.location.href = 'product.html';   
+        }
+
         document.getElementById('searchForm').addEventListener('submit', function (event) {
             //disable page reloading(default behaviour)
             event.preventDefault();
@@ -50,22 +58,33 @@
                 .then(data => {
                     //get link from response
                     const publicLink = data.public_link; 
+
+                    console.log(publicLink);
+
+                    const scrollableList = document.getElementById('scrollableList');
+                    scrollableList.innerHTML = ''; // Clear any existing data
+                    scrollableList.style.display = 'block';
+
+                    publicLink.forEach(item => {
+                        const block = document.createElement('div');
+                        block.addEventListener('click',() => openDppPage(item));
+                        block.className = 'list-block';
+                        block.textContent = `DPP: ${item}`;
+                        scrollableList.appendChild(block);
+                    });
                     //save link to pass it to next page
-                    localStorage.setItem('publicDocLink', publicLink); 
+                    /*localStorage.setItem('publicDocLink', publicLink); 
                     document.getElementById('dppId').textContent = query;
-                    document.getElementById('dppBlock').style.display = 'block'; 
-                    document.getElementById('errorBlock').style.display = 'none'; 
+                    document.getElementById('dppBlock').style.display = 'block';  */
+                    document.getElementById('errorBlock').style.display = 'none';
                 })
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error);
                     document.getElementById('errorBlock').style.display = 'block'; 
-                    document.getElementById('dppBlock').style.display = 'none';
+                    document.getElementById('scrollableList').style.display = 'none';
                 });
         });
 
-        document.getElementById('dppBlock').addEventListener('click', function () {
-            window.location.href = 'product.html'; // Redirige a una nuova pagina HTML
-        });
     </script>
 </body>
 

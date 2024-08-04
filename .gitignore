@@ -4,7 +4,7 @@ DPP_Service/.env
 
 
 #MongoDB directory
-FC_DB_data
+#FC_DB_data
 
 # Logs
 logs
