@@ -2,7 +2,6 @@
 #Env file of DPP service
 DPP_Service/.env
 
-
 #MongoDB directory
 #FC_DB_data
 
