@@ -1,0 +1,31 @@
+{
+    "@context": {
+        "gs1": "https://gs1.org/voc/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "@vocab": "https://gs1.org/voc/"
+    },
+    "@type": "gs1:Product",
+    "gs1:gtin": "09876543210987",
+    "gs1:brandName": "RandomBrand",
+    "gs1:brandOwner": "Random Co.",
+    "gs1:productName": "CoolBreeze 3000",
+    "gs1:productDescription": "Portable Air Conditioner",
+    "gs1:productType": "Home Appliance",
+    "gs1:image": {
+        "gs1:referencedFileURL": "https://via.placeholder.com/600x600.png",
+        "gs1:filePixelWidth": "600",
+        "gs1:filePixelHeight": "600"
+    },
+    "gs1:countryOfAssembly": "Germany",
+    "gs1:packagingMarkedLabelAccreditation": "CE Certification, RoHS Compliant",
+    "gs1:grossWeight": {
+        "gs1:unitCode": "KGM",
+        "gs1:value": "12"
+    },
+    "gs1:grossVolume": {
+        "gs1:unitCode": "MTQ",
+        "gs1:value": "0.5"
+    },
+    "gs1:variantDescription": "Black",
+    "gs1:referencedFile": "https://www.example.com"
+}

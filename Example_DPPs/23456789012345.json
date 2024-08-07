@@ -1,0 +1,31 @@
+{
+    "@context": {
+        "gs1": "https://gs1.org/voc/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "@vocab": "https://gs1.org/voc/"
+    },
+    "@type": "gs1:Product",
+    "gs1:gtin": "23456789012345",
+    "gs1:brandName": "TechGadget",
+    "gs1:brandOwner": "Tech Co.",
+    "gs1:productName": "SmartWatch X",
+    "gs1:productDescription": "Wearable Smart Device",
+    "gs1:productType": "Electronics",
+    "gs1:image": {
+        "gs1:referencedFileURL": "https://via.placeholder.com/600x600.png?text=SmartWatch",
+        "gs1:filePixelWidth": "600",
+        "gs1:filePixelHeight": "600"
+    },
+    "gs1:countryOfAssembly": "China",
+    "gs1:packagingMarkedLabelAccreditation": "CE, RoHS Compliant",
+    "gs1:grossWeight": {
+        "gs1:unitCode": "KGM",
+        "gs1:value": "0.1"
+    },
+    "gs1:grossVolume": {
+        "gs1:unitCode": "MTQ",
+        "gs1:value": "0.01"
+    },
+    "gs1:variantDescription": "Black",
+    "gs1:referencedFile": "https://www.example.com/products/smartwatch-x"
+}

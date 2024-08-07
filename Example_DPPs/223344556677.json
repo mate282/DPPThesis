@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "gs1": "https://gs1.org/voc/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "@vocab": "https://gs1.org/voc/"
+    },
+    "@type": "gs1:WearableProduct",
+    "gs1:gtin": "223344556677",
+    "gs1:brandName": "ActiveFit",
+    "gs1:brandOwner": "Sports Apparel Inc.",
+    "gs1:productName": "Running Shoes",
+    "gs1:productDescription": "Lightweight Running Shoes",
+    "gs1:productType": "footwear",
+    "gs1:image": {
+        "gs1:referencedFileURL": "https://via.placeholder.com/512x512.png?text=Running+Shoes",
+        "gs1:filePixelWidth": "512",
+        "gs1:filePixelHeight": "512"
+    },
+    "gs1:countryOfAssembly": "Vietnam",
+    "gs1:packagingMarkedLabelAccreditation": "Fair Trade Certified",
+    "gs1:grossWeight": {
+        "gs1:unitCode": "GRM",
+        "gs1:value": "800"
+    },
+    "gs1:grossVolume": {
+        "gs1:unitCode": "MTQ",
+        "gs1:value": "0.6"
+    },
+    "gs1:variantDescription": "Black/White",
+    "gs1:referencedFile": "https://www.example.com/products/running-shoes",
+    "gs1:seasonName": "SPRING",
+    "gs1:size": {
+        "gs1:sizeDimension": {
+            "gs1:unitCode": "CMT",
+            "gs1:value": "42"
+        },
+        "gs1:sizeGroup": "UNISEX",
+        "gs1:sizeSystem": "EU",
+        "gs1:sizeType": "FOOT LENGTH"
+    },
+    "gs1:textileMaterialContent": "Mesh: 70%, Rubber: 30%",
+    "collectionName": "Speed Series",
+    "color": "black",
+    "productionWorkflow": "",
+    "userInstruction": "Suitable for outdoor running",
+    "recyclingInstruction": "Dispose of in recycling bin"
+}

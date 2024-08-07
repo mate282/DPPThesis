@@ -1,0 +1,31 @@
+{
+    "@context": {
+        "gs1": "https://gs1.org/voc/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "@vocab": "https://gs1.org/voc/"
+    },
+    "@type": "gs1:Product",
+    "gs1:gtin": "34567890123456",
+    "gs1:brandName": "HomeEssentials",
+    "gs1:brandOwner": "Home Co.",
+    "gs1:productName": "EcoVac 300",
+    "gs1:productDescription": "Robotic Vacuum Cleaner",
+    "gs1:productType": "Cleaning Appliance",
+    "gs1:image": {
+        "gs1:referencedFileURL": "https://via.placeholder.com/600x600.png?text=EcoVac",
+        "gs1:filePixelWidth": "600",
+        "gs1:filePixelHeight": "600"
+    },
+    "gs1:countryOfAssembly": "Japan",
+    "gs1:packagingMarkedLabelAccreditation": "Energy Star, JIS Certified",
+    "gs1:grossWeight": {
+        "gs1:unitCode": "KGM",
+        "gs1:value": "4"
+    },
+    "gs1:grossVolume": {
+        "gs1:unitCode": "MTQ",
+        "gs1:value": "0.15"
+    },
+    "gs1:variantDescription": "White",
+    "gs1:referencedFile": "https://www.example.com/products/ecovac-300"
+}

@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "gs1": "https://gs1.org/voc/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "@vocab": "https://gs1.org/voc/"
+    },
+    "@type": "gs1:WearableProduct",
+    "gs1:gtin": "334455667788",
+    "gs1:brandName": "ElegantAttire",
+    "gs1:brandOwner": "Luxury Fashion Ltd.",
+    "gs1:productName": "Silk Scarf",
+    "gs1:productDescription": "Luxurious Silk Scarf",
+    "gs1:productType": "accessory",
+    "gs1:image": {
+        "gs1:referencedFileURL": "https://via.placeholder.com/512x512.png?text=Silk+Scarf",
+        "gs1:filePixelWidth": "512",
+        "gs1:filePixelHeight": "512"
+    },
+    "gs1:countryOfAssembly": "France",
+    "gs1:packagingMarkedLabelAccreditation": "GOTS Certified",
+    "gs1:grossWeight": {
+        "gs1:unitCode": "GRM",
+        "gs1:value": "150"
+    },
+    "gs1:grossVolume": {
+        "gs1:unitCode": "MTQ",
+        "gs1:value": "0.1"
+    },
+    "gs1:variantDescription": "Floral Print",
+    "gs1:referencedFile": "https://www.example.com/products/silk-scarf",
+    "gs1:seasonName": "AUTUMN",
+    "gs1:size": {
+        "gs1:sizeDimension": {
+            "gs1:unitCode": "CMT",
+            "gs1:value": "90"
+        },
+        "gs1:sizeGroup": "WOMENS",
+        "gs1:sizeSystem": "EU",
+        "gs1:sizeType": "LENGTH"
+    },
+    "gs1:textileMaterialContent": "Silk: 100%",
+    "collectionName": "Elegance Collection",
+    "color": "multicolor",
+    "productionWorkflow": "",
+    "userInstruction": "Dry clean only",
+    "recyclingInstruction": "Recyclable with textiles"
+}

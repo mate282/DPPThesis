@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "gs1": "https://gs1.org/voc/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "@vocab": "https://gs1.org/voc/"
+    },
+    "@type": "gs1:WearableProduct",
+    "gs1:gtin": "112233445566",
+    "gs1:brandName": "StyleWear",
+    "gs1:brandOwner": "Fashion Corp.",
+    "gs1:productName": "Blue Jeans",
+    "gs1:productDescription": "Slim Fit Blue Jeans",
+    "gs1:productType": "clothing",
+    "gs1:image": {
+        "gs1:referencedFileURL": "https://via.placeholder.com/512x512.png?text=Blue+Jeans",
+        "gs1:filePixelWidth": "512",
+        "gs1:filePixelHeight": "512"
+    },
+    "gs1:countryOfAssembly": "Bangladesh",
+    "gs1:packagingMarkedLabelAccreditation": "OEKO-TEX Standard 100",
+    "gs1:grossWeight": {
+        "gs1:unitCode": "GRM",
+        "gs1:value": "600"
+    },
+    "gs1:grossVolume": {
+        "gs1:unitCode": "MTQ",
+        "gs1:value": "0.3"
+    },
+    "gs1:variantDescription": "Dark Wash",
+    "gs1:referencedFile": "https://www.example.com/products/blue-jeans",
+    "gs1:seasonName": "ALL SEASONS",
+    "gs1:size": {
+        "gs1:sizeDimension": {
+            "gs1:unitCode": "CMT",
+            "gs1:value": "32"
+        },
+        "gs1:sizeGroup": "MENS",
+        "gs1:sizeSystem": "US",
+        "gs1:sizeType": "WAIST"
+    },
+    "gs1:textileMaterialContent": "Cotton: 98%, Spandex: 2%",
+    "collectionName": "Urban Style",
+    "color": "blue",
+    "productionWorkflow": "",
+    "userInstruction": "Machine wash cold",
+    "recyclingInstruction": "Recycle according to local regulations"
+}
