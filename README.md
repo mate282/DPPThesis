@@ -32,14 +32,17 @@ USAGE:
 2) Copy the ".env" file inside the DPP_Service folder.
 3) Open terminal from the repository folder
 4) Open Docker
-5) In the terminal run the compose file with:
-    #docker compose up -d
+5) In the terminal run the following command:
+   #docker compose up -d
    and wait for the setup
-6) From your browser enter the following URL to http://localhost:5054/www/ to access the Web App
+  (sometimes the fc_service could crash because it tries to connect to fc_db which has not yet started. Just wait for the fc_db finish to start up and then restart fc_service).
+  
+7) From your browser enter the following URL to http://localhost:5054/www/ to access the Web App
 
-Actually on the MongoDB server there are two registered object: 
-1) _id: 12345678901234
-2) _id: 9876543210
+The mongoDB server is configured to create two dpps object and a user during the initialization:
+dpp1: _id: 12345678901234
+dpp2: _id: 9876543210
+user1: _id: utente1, psw: utente1
 
 From the web app you can search for one of this object and get the link to their DPP.
 
