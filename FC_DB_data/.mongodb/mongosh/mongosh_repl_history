@@ -1,3 +1,0 @@
-db.users.find()
-db.dpps.find()
-use dpp_fc_db
