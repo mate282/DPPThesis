@@ -6,12 +6,23 @@ services:
     volumes:
       - ./Web_App:/usr/local/apache2/htdocs/
 
+  fc_db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: dpp_fc_db
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./FC_DB_data:/data/db
+    ports:
+      - "5053:27017"
+
   fc_service:
     build: ./FC_Service
     ports:
       - "5052:5052"
     volumes:
       - ./FC_Service:/usr/src/app
+      - /usr/src/app/node_modules
 
   #lta_service:
   #  build: ./LTA_service
@@ -24,15 +35,7 @@ services:
     build: ./DPP_service
     volumes:
       - ./DPP_service:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "5051:5051"
 
-  fc_db:
-    image: mongo:latest
-    environment:
-      MONGO_INITDB_DATABASE: dpp_fc_db
-    volumes:
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-      - ./FC_DB_data:/data/db
-    ports:
-      - "5053:27017"
