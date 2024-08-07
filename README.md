@@ -20,7 +20,7 @@ DPP_Service => DPP document service used to manage (upload/download) the documen
 
 LTA_Service => old service used to save documents. DEPRECATED
 
-FC_DB_Data => Data of Federated Central service DB used to store documents URL
+FC_DB_Data => Data of Federated Central service DB used to store documents URL. This folder will be created with the container for mongoDB
 
 Web_App => User UI to use the DPP Infrastructure.
           Running on port 5054
