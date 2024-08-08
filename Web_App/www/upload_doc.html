@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document</title>
+    <link rel="stylesheet" href="upload_doc.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Digital Product Passport</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a
+                    href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/digital-2023-cloud-data-04-digipass;callCode=null;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1,2,8;statusCodes=31094501;programmePeriod=2021%20-%202027;programCcm2Id=43152860;programDivisionCode=null;focusAreaCode=null;destinationGroup=null;missionGroup=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=topicSearchTablePageState">About</a>
+            </li>
+            <li><a href="upload_doc.html">New Document</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Upload JSON File</h1>
+        <form id="uploadForm">
+            <label for="jsonFile" class="custom-file-upload">
+                Choose File
+            </label>
+            <input type="file" id="jsonFile" accept=".json" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="fileContent">
+            <!-- File content will be displayed here -->
+        </div>
+    </div>
+
+    <div id="credentialsModal" class="modal">
+        <div class="modal-content">
+            <h3>Enter Your Credentials</h3>
+            <input type="text" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button id="submitCredentials">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('jsonFile').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file && file.type === 'application/json') {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const content = e.target.result;
+                        const jsonContent = JSON.parse(content);
+                        displayContent(jsonContent); // Display JSON content
+                    } catch (err) {
+                        console.error('Invalid JSON file:', err);
+                        alert('The file is not a valid JSON.');
+                    }
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Please upload a valid JSON file.');
+            }
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('jsonFile');
+            const file = fileInput.files[0];
+
+            if (file && file.type === 'application/json') {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const content = e.target.result;
+                    const jsonContent = JSON.parse(content);
+                    //displayContent(jsonContent);
+                    registerDoc(jsonContent);
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Please upload a valid JSON file.');
+            }
+        });
+
+        function displayContent(content) {
+            const fileContentDiv = document.getElementById('fileContent');
+            fileContentDiv.innerHTML = '<pre>' + JSON.stringify(content, null, 2) + '</pre>';
+        }
+
+        //============================================================================================
+        async function getDppServiceToken() {
+
+            try {
+                let token = "";
+
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const raw = JSON.stringify({
+                    "email": "admin",
+                    "psw": "admin"
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                let response = await fetch("http://localhost:5051/users/login", requestOptions);
+                let data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(`DPP Service Login error! \r\n ${response.status} \r\n ${JSON.stringify(data)}`)
+                }
+
+                token = data.token;
+                console.log('DPP Service Login success', token);
+
+                return token;
+            }
+            catch (error) {
+                //console.error('Error:', error);
+                //alert('There was an error during DPP Service login');
+                throw error;
+            }
+
+        }
+
+        async function getFCServiceToken() {
+
+            try {
+                let token = "";
+
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const raw = JSON.stringify({
+                    "name": "utente1",
+                    "psw": "utente1"
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                let response = await fetch("http://localhost:5052/users/login", requestOptions);
+                let data = await response.json();
+
+
+                if (!response.ok) {
+                    throw new Error(`FC Service Login error! \r\n ${response.status} \r\n ${JSON.stringify(data)}`)
+                }
+
+                token = data.token;
+                console.log('FC Service Login success', token);
+
+                return token;
+            }
+            catch (error) {
+                //console.error('Error:', error);
+                //alert('There was an error during FC Service login');
+                throw error;
+            }
+
+        }
+
+        async function uploadDPP(content) {
+
+            try {
+                let token = await getDppServiceToken();
+                let dataResp = "";
+
+                let bodyJSON = JSON.stringify({
+                    "document": content
+                });
+
+                console.log(bodyJSON);
+
+
+
+                if (!token) {
+                    console.log("No DPP token received");
+                }
+
+                if (token) {
+                    const myHeaders = new Headers();
+                    myHeaders.append("Authorization", `Bearer ${token}`);
+                    myHeaders.append("Content-Type", `Application/json`);
+                    const requestOptions = {
+                        method: "POST",
+                        headers: myHeaders,
+                        body: bodyJSON,
+                        redirect: "follow"
+                    };
+
+                    let response = await fetch('http://localhost:5051/dpp', requestOptions);
+
+                    let data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(`DPP Service upload error! \r\n ${response.status} \r\n ${JSON.stringify(data)}`)
+                    }
+
+                    console.log('DPP Upload success:', JSON.stringify(data));
+                    return data;
+                }
+                else
+                    return "";
+            }
+            catch (error) {
+                //console.error('Error:', error);
+                //alert('There was an error during DPP Service upload');
+                throw error;
+            }
+
+        }
+
+        async function registerDoc(content) {
+
+            try {
+                let token = await getFCServiceToken();
+                let data = await uploadDPP(content);
+
+
+                const myHeaders = new Headers();
+                myHeaders.append("Authorization", `Bearer ${token}`);
+                myHeaders.append("Content-Type", "application/json");
+
+                let public_link = `${data.publicDocUrl}`;
+                let private_link = public_link.replace(/public/g, "restricted");
+
+                const raw = JSON.stringify({
+                    "dpp": {
+                        "id": content["gs1:gtin"],
+                        "public_link": public_link,
+                        "private_link": private_link
+                    }
+                });
+
+                console.log("Doc to register", raw);
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                if (!data) {
+                    console.log("No DPP data received");
+                }
+
+                if (!token) {
+                    console.log("No FC token received", token);
+                }
+
+                if (data && token) {
+                    let response = await fetch("http://localhost:5052/dpp", requestOptions);
+                    let data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(`FC Service Register error! \r\n ${response.status} \r\n ${JSON.stringify(data)}`)
+                    }
+
+                    console.log(JSON.stringify(data));
+                    alert("Document Uploaded and Registered");
+
+                }
+                else {
+                    alert("Upload failed");
+                }
+            }
+            catch (error) {
+                console.log("Error:", error);
+                alert("Upload failed");
+            }
+
+        }
+        //============================================================================================
+    </script>
+</body>
+
+</html>
